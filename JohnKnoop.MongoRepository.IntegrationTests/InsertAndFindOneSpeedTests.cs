@@ -227,8 +227,8 @@ namespace JohnKnoop.MongoRepository.IntegrationTests
 
 			var rr = await r.GetAsync(cm.Id.ToString());
 
-			Assert.True(rr.Name == cm.Name);
-			Assert.True(rr.OtherProtected == cm.OtherProtected);
+			Assert.That(rr.Name == cm.Name);
+			Assert.That(rr.OtherProtected == cm.OtherProtected);
 		}
 
 
@@ -317,7 +317,7 @@ namespace JohnKnoop.MongoRepository.IntegrationTests
 
 			foreach (var el in ret)
             {
-				Assert.True(what.IsSubsetOf(el.Tags));
+				Assert.That(what.IsSubsetOf(el.Tags));
             }
 
 			// get all groups where at least 1 file have tags match
@@ -330,14 +330,14 @@ namespace JohnKnoop.MongoRepository.IntegrationTests
 
 			_testOutputHelper.WriteLine($"Search I Time: {sw.ElapsedMilliseconds}");
 
-			// Assert.True(ret1.Count == cntStarts1);
+			// Assert.That(ret1.Count == cntStarts1);
 
-			Assert.True(ret1.Count == 1);
+			Assert.That(ret1.Count == 1);
 
 
 			//foreach (var el in ret1)
 			//{
-			//    Assert.True(el.Files.Any(f => what.IsSubsetOf(f.Tags)));
+			//    Assert.That(el.Files.Any(f => what.IsSubsetOf(f.Tags)));
 			//}
 
 
