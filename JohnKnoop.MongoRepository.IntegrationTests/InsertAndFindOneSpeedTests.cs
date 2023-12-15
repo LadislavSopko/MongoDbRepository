@@ -330,14 +330,14 @@ namespace JohnKnoop.MongoRepository.IntegrationTests
 
 			_testOutputHelper.WriteLine($"Search I Time: {sw.ElapsedMilliseconds}");
 
-			// Assert.True(ret1.Count == cntStarts1);
+			// Assert.That(ret1.Count == cntStarts1);
 
 			Assert.True(ret1.Count == 1);
 
 
 			//foreach (var el in ret1)
 			//{
-			//    Assert.True(el.Files.Any(f => what.IsSubsetOf(f.Tags)));
+			//    Assert.That(el.Files.Any(f => what.IsSubsetOf(f.Tags)));
 			//}
 
 
