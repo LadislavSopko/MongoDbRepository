@@ -35,11 +35,14 @@
 		<PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
 	</ItemGroup>
 
-  <Target Name="PublishNuget" Condition="'$(Configuration)|$(Platform)' == 'MakeNuget|AnyCPU'" AfterTargets="pack">
-    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
-      <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo" />
-    </GetAssemblyIdentity>
-    <Message Text="PublishNuget" />
-    <Exec Command="dotnet nuget push bin\MakeNuget\$(TargetName).$(MainVersion).nupkg --source ZeroX-3u-gitlab  --skip-duplicate" />
-  </Target>
+	<Target Name="PublishNuget" Condition="'$(Configuration)|$(Platform)' == 'MakeNuget|AnyCPU'" AfterTargets="pack">
+		<GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+			<Output TaskParameter="Assemblies" ItemName="myAssemblyInfo" />
+		</GetAssemblyIdentity>
+		<Message Text="PublishNuget" />
+		<Exec Command="dotnet nuget push bin\MakeNuget\$(TargetName).$(MainVersion).nupkg --source $(NugetRepository)  --skip-duplicate" />
+	</Target>
+	
+
+	
 </Project>

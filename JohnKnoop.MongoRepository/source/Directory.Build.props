@@ -3,4 +3,5 @@
 	<PropertyGroup>
     <MainVersion>6.3.6</MainVersion>	
   </PropertyGroup>
+	<Import Project="../../../Directory.Build.props" />
 </Project>
