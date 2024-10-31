@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Transactions;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Core.Operations;
 using MongoDB.Driver.Linq;
 
 namespace JohnKnoop.MongoRepository
