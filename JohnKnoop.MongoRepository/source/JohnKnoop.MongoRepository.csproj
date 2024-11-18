@@ -32,7 +32,7 @@
 		<PackageReference Include="MongoDB.Driver" version="2.30.0" />
 		<PackageReference Include="MongoDB.Driver.core" version="2.30.0" />
 		<PackageReference Include="Newtonsoft.Json" version="13.0.3" />
-		<PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+		<PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.0" />
 	</ItemGroup>
 
   <Target Name="PublishNuget" Condition="'$(Configuration)|$(Platform)' == 'MakeNuget|AnyCPU'" AfterTargets="pack">
