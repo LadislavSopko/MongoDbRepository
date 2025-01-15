@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+using FluentAssertions;
 using FluentAssertions.Collections;
 using FluentAssertions.Execution;
 using System;
@@ -15,9 +15,10 @@ namespace JohnKnoop.MongoRepository.IntegrationTests
 			var property = testable?.GetType().GetProperty(memberName);
 			var actualValue = property?.GetValue(testable);
 
-			Execute.Assertion
-				.ForCondition(actualValue?.Equals(expectedValue) ?? false)
-				.FailWith($"Expected the property {memberName} to have value {expectedValue} but found {actualValue}");
+			//Execute.Assertion
+			//	.ForCondition(actualValue?.Equals(expectedValue) ?? false)
+			//	.FailWith($"Expected the property {memberName} to have value {expectedValue} but found {actualValue}");
+			actualValue.Should().Be(expectedValue, $"Because property with name {memberName} should have value {expectedValue}, but it found {actualValue}");
 
 			return new AndConstraint<TTestable>(testable);
 		}
