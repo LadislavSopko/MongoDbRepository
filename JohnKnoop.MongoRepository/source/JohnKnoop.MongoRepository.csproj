@@ -10,12 +10,13 @@
 		<LangVersion>8.0</LangVersion>
 		<PackageReleaseNotes>ArrayFilters helpers (experimental)</PackageReleaseNotes>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>$(MainVersion)</Version>
+		<Version>$(MainVersion)</Version>
 		<AssemblyVersion>$(MainVersion)</AssemblyVersion>
 		<FileVersion>$(MainVersion)</FileVersion>
-    <PackageVersion>$(MainVersion)</PackageVersion>
+		<PackageVersion>$(MainVersion)</PackageVersion>
 		<Configurations>Debug;Release;MakeNuget</Configurations>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -28,11 +29,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MongoDB.Bson" version="2.30.0" />
-		<PackageReference Include="MongoDB.Driver" version="2.30.0" />
-		<PackageReference Include="MongoDB.Driver.core" version="2.30.0" />
-		<PackageReference Include="Newtonsoft.Json" version="13.0.3" />
-		<PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.0" />
+		<PackageReference Include="MongoDB.Bson" />
+		<PackageReference Include="MongoDB.Driver" />
+		<PackageReference Include="MongoDB.Driver.core"  />
+		<PackageReference Include="Newtonsoft.Json"  />
+		<PackageReference Include="System.Threading.Tasks.Extensions"  />
 	</ItemGroup>
 
   <Target Name="PublishNuget" Condition="'$(Configuration)|$(Platform)' == 'MakeNuget|AnyCPU'" AfterTargets="pack">
