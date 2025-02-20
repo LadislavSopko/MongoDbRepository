@@ -73,8 +73,9 @@ namespace JohnKnoop.MongoRepository
 			}
 
 			var bsonDoc = filter(Builders<TChildArrayElement>.Filter).Render(
+				new RenderArgs<TChildArrayElement>(
 				BsonSerializer.SerializerRegistry.GetSerializer<TChildArrayElement>(),
-				BsonSerializer.SerializerRegistry
+				BsonSerializer.SerializerRegistry)
 			);
 
 			return new ThenableArrayFiltersBuilder<TEntity, TChildArrayElement>(new List<ArrayFilterDefinition<BsonValue>>
@@ -112,8 +113,9 @@ namespace JohnKnoop.MongoRepository
 			}
 
 			var bsonDoc = filter(Builders<TChildArrayElement>.Filter).Render(
+				new RenderArgs<TChildArrayElement>(
 				BsonSerializer.SerializerRegistry.GetSerializer<TChildArrayElement>(),
-				BsonSerializer.SerializerRegistry
+				BsonSerializer.SerializerRegistry)
 			);
 
 			return new ThenableArrayFiltersBuilder<TEntity, TChildArrayElement>(_filters.Append(
@@ -155,8 +157,9 @@ namespace JohnKnoop.MongoRepository
 			}
 
 			var bsonDoc = filter(Builders<TChildArrayElement>.Filter).Render(
+				new RenderArgs<TChildArrayElement>(
 				BsonSerializer.SerializerRegistry.GetSerializer<TChildArrayElement>(),
-				BsonSerializer.SerializerRegistry
+				BsonSerializer.SerializerRegistry)
 			);
 
 			return new ThenableArrayFiltersBuilder<TEntity, TChildArrayElement>(_filters.Append(

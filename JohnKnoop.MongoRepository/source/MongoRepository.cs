@@ -896,7 +896,9 @@ namespace JohnKnoop.MongoRepository
 			var serializerRegistry = BsonSerializer.SerializerRegistry;
 			var documentSerializer = serializerRegistry.GetSerializer<TDerivedEntity>();
 
-			var filterBson = Builders<TDerivedEntity>.Filter.Where(filterExpr).Render(documentSerializer, serializerRegistry);
+			var filterBson = Builders<TDerivedEntity>.Filter.Where(filterExpr).Render(
+				new RenderArgs<TDerivedEntity>(documentSerializer, serializerRegistry)
+			);
 
 			await WithTransaction(async session =>
 			{
@@ -916,7 +918,7 @@ namespace JohnKnoop.MongoRepository
 			var serializerRegistry = BsonSerializer.SerializerRegistry;
 			var documentSerializer = serializerRegistry.GetSerializer<SoftDeletedEntity<TDerived>>();
 
-			var filterBson = Builders<SoftDeletedEntity<TDerived>>.Filter.Where(filter).Render(documentSerializer, serializerRegistry);
+			var filterBson = Builders<SoftDeletedEntity<TDerived>>.Filter.Where(filter).Render(new RenderArgs<SoftDeletedEntity<TDerived>>(documentSerializer, serializerRegistry));
 
 			var deletedObjects = await _trash.Find(filterBson).ToListAsync();
 
@@ -1609,8 +1611,9 @@ namespace JohnKnoop.MongoRepository
 			var patch = updateExpression(Builders<TEntity>.Update);
 
 			var patchedPropertyNames = patch.Render(
-				   BsonSerializer.SerializerRegistry.GetSerializer<TEntity>(),
-				   BsonSerializer.SerializerRegistry
+					new RenderArgs<TEntity>(
+					BsonSerializer.SerializerRegistry.GetSerializer<TEntity>(),
+					BsonSerializer.SerializerRegistry)
 				)
 				.AsBsonDocument.Select(x => x.Value.AsBsonDocument).SelectMany(prop => prop.Select(p => p.Name)).ToList();
 
@@ -1644,8 +1647,9 @@ namespace JohnKnoop.MongoRepository
 			var patch = updateExpression(Builders<TDerived>.Update);
 
 			var patchedPropertyNames = patch.Render(
-				   BsonSerializer.SerializerRegistry.GetSerializer<TDerived>(),
-				   BsonSerializer.SerializerRegistry
+				new RenderArgs<TDerived>(
+				BsonSerializer.SerializerRegistry.GetSerializer<TDerived>(),
+				BsonSerializer.SerializerRegistry)
 				)
 				.AsBsonDocument.Select(x => x.Value.AsBsonDocument).SelectMany(prop => prop.Select(p => p.Name)).ToList();
 
