@@ -41,6 +41,7 @@
       <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo" />
     </GetAssemblyIdentity>
     <Message Text="PublishNuget" />
-    <Exec Command="dotnet nuget push bin\MakeNuget\$(TargetName).$(MainVersion).nupkg --source ZeroX-3u-gitlab  --skip-duplicate" />
+    
+	<Exec Command="dotnet nuget push bin\MakeNuget\$(TargetName).$(MainVersion).nupkg --source Treu-Cloud-Nugets --api-key 3u  --skip-duplicate" />
   </Target>
 </Project>
